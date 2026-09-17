@@ -8,8 +8,9 @@ import { DataStream } from "@/components/DataStream";
 export default function Home() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero + About, merged into one flowing intro */}
       <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-nebula" aria-hidden="true" />
         <div className="relative mx-auto flex max-w-4xl flex-col gap-6 px-6 py-32">
           <div className="animate-fade-up">
             <p className="font-mono text-xs uppercase tracking-widest text-muted">
@@ -32,62 +33,91 @@ export default function Home() {
             {site.tagline}
             <span className="ml-1 inline-block h-5 w-2 translate-y-0.5 bg-accent cursor-blink" />
           </div>
-        </div>
-      </section>
 
-      {/* About (unlabeled — flows straight from the hero) */}
-      <section id="about" className="relative scroll-mt-20 overflow-hidden divider-glow py-24">
-        <div className="absolute inset-0 bg-nebula" aria-hidden="true" />
-        <div className="relative mx-auto flex max-w-3xl flex-col gap-16 px-6">
-          <Reveal className="flex flex-col gap-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">
-              Data Science · Machine Learning · AI
-            </p>
-            <p className="text-muted">
-              I&apos;m a Computational Data Science student at Penn State, focused on data
-              science, machine learning, and AI. My work spans building LLM-based pipelines for
-              biomedical research, training predictive models on real-world financial and customer
-              data, and engineering the data pipelines that feed them.
-            </p>
-            <p className="text-muted">
-              I&apos;m currently a researcher in Penn State&apos;s Dept. of Information Sciences
-              &amp; Biochemistry, building an LLM pipeline to extract and classify database
-              accessions from biomedical manuscripts, and I lead data analytics projects at
-              Nittany Data Labs. Recent work includes transformer-based time series forecasting,
-              supervised ML models for churn and risk scoring, and SQL-backed reporting pipelines.
-            </p>
-          </Reveal>
-
-          <Reveal className="flex flex-col gap-4" delay={100}>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Education</h2>
-            <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
-              <p className="font-medium">{education.school}</p>
-              <p className="text-muted">{education.degree}</p>
-              <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted">
-                GPA: {education.gpa} · Graduation: {education.graduation}
+          <div id="about" className="mt-10 flex flex-col gap-8 scroll-mt-20">
+            <Reveal className="flex flex-col gap-4">
+              <p className="text-muted">
+                I&apos;m a Computational Data Science student at Penn State, focused on data
+                science, machine learning, and AI. My work spans building LLM-based pipelines for
+                biomedical research, training predictive models on real-world financial and
+                customer data, and engineering the data pipelines that feed them.
               </p>
-              <div className="mt-4 border-t border-border pt-4">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
-                  Relevant coursework
+              <p className="text-muted">
+                I&apos;m currently a researcher in Penn State&apos;s Dept. of Information
+                Sciences &amp; Biochemistry, building an LLM pipeline to extract and classify
+                database accessions from biomedical manuscripts, and I lead data analytics
+                projects at Nittany Data Labs. Recent work includes transformer-based time
+                series forecasting, supervised ML models for churn and risk scoring, and
+                SQL-backed reporting pipelines.
+              </p>
+            </Reveal>
+
+            <Reveal
+              delay={80}
+              className="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-widest text-muted"
+            >
+              <span className="inline-flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" aria-hidden="true" />
+                Graduating {education.graduation}
+              </span>
+              <span>{site.location}</span>
+              <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
+                Email
+              </a>
+              <a
+                href={site.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-accent"
+              >
+                GitHub
+              </a>
+              <a
+                href={site.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-accent"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={site.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-accent"
+              >
+                Résumé
+              </a>
+            </Reveal>
+
+            <Reveal delay={140} className="flex flex-col gap-4">
+              <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Education</h2>
+              <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                <p className="font-medium">{education.school}</p>
+                <p className="text-muted">{education.degree}</p>
+                <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted">
+                  GPA: {education.gpa} · Graduation: {education.graduation}
                 </p>
-                <p className="mt-1 text-sm text-muted">{education.coursework.join(", ")}</p>
+                <div className="mt-4 border-t border-border pt-4">
+                  <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+                    Relevant coursework
+                  </p>
+                  <p className="mt-1 text-sm text-muted">{education.coursework.join(", ")}</p>
+                </div>
+                <div className="mt-4">
+                  <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+                    Organizations
+                  </p>
+                  <p className="mt-1 text-sm text-muted">{education.organizations.join(", ")}</p>
+                </div>
               </div>
-              <div className="mt-4">
-                <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
-                  Organizations
-                </p>
-                <p className="mt-1 text-sm text-muted">{education.organizations.join(", ")}</p>
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section
-        id="experience"
-        className="relative scroll-mt-20 overflow-hidden divider-glow py-24"
-      >
+      <section id="experience" className="relative scroll-mt-20 overflow-hidden py-24">
         <DataStream />
         <div className="relative mx-auto flex max-w-3xl flex-col gap-4 px-6">
           <Reveal>
@@ -129,7 +159,7 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative scroll-mt-20 overflow-hidden divider-glow py-24">
+      <section id="projects" className="relative scroll-mt-20 overflow-hidden py-24">
         <div className="absolute inset-0 bg-grid-drift" aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl px-6">
           <Reveal>
@@ -147,10 +177,7 @@ export default function Home() {
       </section>
 
       {/* Toolkit */}
-      <section
-        id="toolkit"
-        className="relative scroll-mt-20 overflow-hidden divider-glow py-24"
-      >
+      <section id="toolkit" className="relative scroll-mt-20 overflow-hidden py-24">
         <div className="absolute inset-0 bg-radar" aria-hidden="true" />
         <div className="absolute inset-0 bg-radar-sweep" aria-hidden="true" />
         <div className="relative mx-auto max-w-3xl px-6">
@@ -174,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-20 divider-glow">
+      <section id="contact" className="scroll-mt-20">
         <div className="mx-auto max-w-3xl px-6 py-24">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Contact</p>
