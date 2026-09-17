@@ -79,3 +79,15 @@ export const skills = {
   tools: ["Git", "Docker", "AWS", "Excel", "Jupyter", "Power BI", "PyTest", "Apache Derby", "PostgreSQL", "PubMed API", "JDBC"],
   certifications: ["SAP Certified – SAP Generative AI Developer"],
 };
+
+export type ToolkitCategory = {
+  label: string;
+  items: string[];
+};
+
+export const toolkit: ToolkitCategory[] = [
+  { label: "Languages", items: skills.languages },
+  { label: "ML / Data", items: skills.frameworks },
+  { label: "Tools & Infra", items: skills.tools },
+  { label: "Certifications", items: skills.certifications },
+];

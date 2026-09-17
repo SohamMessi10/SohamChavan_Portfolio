@@ -5,7 +5,7 @@ import { projects } from "@/content/projects";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
 
-  const staticRoutes = ["", "/projects", "/about", "/resume"].map((path) => ({
+  const staticRoutes = [""].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date(),
   }));

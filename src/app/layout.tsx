@@ -4,6 +4,7 @@ import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { Starfield } from "@/components/Starfield";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -52,7 +53,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+        </noscript>
         <JsonLd data={personJsonLd} />
+        <div className="fixed inset-0 -z-10" aria-hidden="true">
+          <Starfield />
+        </div>
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

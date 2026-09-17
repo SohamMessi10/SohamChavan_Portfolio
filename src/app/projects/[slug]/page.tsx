@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/content/projects";
 
@@ -37,6 +38,12 @@ export default async function ProjectPage({
 
   return (
     <section className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-16">
+      <Link
+        href="/#projects"
+        className="w-fit font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+      >
+        ← Back to projects
+      </Link>
       <div>
         <p className="font-mono text-xs uppercase tracking-widest text-muted">{project.dates}</p>
         <h1 className="mt-1 text-3xl font-semibold tracking-tight">{project.name}</h1>

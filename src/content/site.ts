@@ -13,10 +13,9 @@ export const site = {
   },
   resumeUrl: "/resume/soham-chavan-resume.pdf",
   nav: [
-    { label: "Home", href: "/" },
-    { label: "Projects", href: "/projects" },
-    { label: "About", href: "/about" },
-    { label: "Resume", href: "/resume" },
-    { label: "Contact", href: "/about#contact" },
+    { label: "Projects", href: "/#projects" },
+    { label: "About", href: "/#about" },
+    { label: "Toolkit", href: "/#toolkit" },
+    { label: "Contact", href: "/#contact" },
   ],
 } as const;
