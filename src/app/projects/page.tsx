@@ -9,20 +9,35 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <section className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-16">
+    <section className="mx-auto flex max-w-4xl flex-col gap-8 px-6 py-16">
       <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
       {projects.length === 0 ? (
-        <p className="text-zinc-600 dark:text-zinc-400">Projects coming soon.</p>
+        <p className="text-muted">Projects coming soon.</p>
       ) : (
         <ul className="flex flex-col gap-4">
           {projects.map((project) => (
             <li key={project.slug}>
               <Link
                 href={`/projects/${project.slug}`}
-                className="block rounded-lg border border-black/10 p-4 hover:bg-black/[.03] dark:border-white/15 dark:hover:bg-white/[.05]"
+                className="block rounded-md border border-border p-5 transition-colors hover:border-accent"
               >
-                <h2 className="font-medium">{project.name}</h2>
-                <p className="text-sm text-zinc-600 dark:text-zinc-400">{project.summary}</p>
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h2 className="font-medium">{project.name}</h2>
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted">
+                    {project.dates}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-muted">{project.summary}</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded border border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-widest text-muted"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
               </Link>
             </li>
           ))}

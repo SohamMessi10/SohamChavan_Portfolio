@@ -36,28 +36,31 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <section className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-16">
+    <section className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-16">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">{project.name}</h1>
-        <p className="text-sm text-zinc-500 dark:text-zinc-500">{project.dates}</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-muted">{project.dates}</p>
+        <h1 className="mt-1 text-3xl font-semibold tracking-tight">{project.name}</h1>
       </div>
-      <p className="text-zinc-600 dark:text-zinc-400">{project.summary}</p>
+      <p className="text-muted">{project.summary}</p>
 
-      <div>
-        <h2 className="font-medium">Problem</h2>
-        <p className="text-zinc-600 dark:text-zinc-400">{project.problem}</p>
-      </div>
-
-      <div>
-        <h2 className="font-medium">Role</h2>
-        <p className="text-zinc-600 dark:text-zinc-400">{project.role}</p>
+      <div className="rounded-md border border-border p-5">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Problem</h2>
+        <p className="mt-2">{project.problem}</p>
       </div>
 
+      <div className="rounded-md border border-border p-5">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Role</h2>
+        <p className="mt-2">{project.role}</p>
+      </div>
+
       <div>
-        <h2 className="font-medium">Stack</h2>
-        <ul className="flex flex-wrap gap-2 text-sm">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Stack</h2>
+        <ul className="mt-2 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
-            <li key={tech} className="rounded-full border border-black/10 px-3 py-1 dark:border-white/15">
+            <li
+              key={tech}
+              className="rounded border border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-widest text-muted"
+            >
               {tech}
             </li>
           ))}
@@ -65,9 +68,9 @@ export default async function ProjectPage({
       </div>
 
       {project.outcomes && project.outcomes.length > 0 && (
-        <div>
-          <h2 className="font-medium">Outcomes</h2>
-          <ul className="list-disc pl-5 text-zinc-600 dark:text-zinc-400">
+        <div className="rounded-md border border-border p-5">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Outcomes</h2>
+          <ul className="mt-2 list-disc pl-5 text-muted">
             {project.outcomes.map((outcome) => (
               <li key={outcome}>{outcome}</li>
             ))}

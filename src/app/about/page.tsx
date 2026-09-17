@@ -8,16 +8,19 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="mx-auto flex max-w-3xl flex-col gap-12 px-6 py-16">
+    <section className="mx-auto flex max-w-3xl flex-col gap-16 px-6 py-16">
       <div className="flex flex-col gap-4">
+        <p className="font-mono text-xs uppercase tracking-widest text-muted">
+          Data Science · Machine Learning · AI
+        </p>
         <h1 className="text-3xl font-semibold tracking-tight">About</h1>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-muted">
           I&apos;m a Computational Data Science student at Penn State, focused on data
           science, machine learning, and AI. My work spans building LLM-based pipelines for
           biomedical research, training predictive models on real-world financial and customer
           data, and engineering the data pipelines that feed them.
         </p>
-        <p className="text-zinc-600 dark:text-zinc-400">
+        <p className="text-muted">
           I&apos;m currently a researcher in Penn State&apos;s Dept. of Information Sciences &amp;
           Biochemistry, building an LLM pipeline to extract and classify database accessions
           from biomedical manuscripts, and I lead data analytics projects at Nittany Data Labs.
@@ -27,68 +30,90 @@ export default function AboutPage() {
       </div>
 
       <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold tracking-tight">Education</h2>
-        <div>
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Education</h2>
+        <div className="rounded-md border border-border p-5">
           <p className="font-medium">{education.school}</p>
-          <p className="text-zinc-600 dark:text-zinc-400">{education.degree}</p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-500">
+          <p className="text-muted">{education.degree}</p>
+          <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted">
             GPA: {education.gpa} · Graduation: {education.graduation}
           </p>
-        </div>
-        <div>
-          <p className="text-sm font-medium">Relevant coursework</p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            {education.coursework.join(", ")}
-          </p>
-        </div>
-        <div>
-          <p className="text-sm font-medium">Organizations</p>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            {education.organizations.join(", ")}
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-8">
-        <h2 className="text-xl font-semibold tracking-tight">Experience</h2>
-        {experience.map((job) => (
-          <div key={`${job.organization}-${job.role}`} className="flex flex-col gap-2">
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-              <p className="font-medium">
-                {job.role} · {job.organization}
-              </p>
-              <p className="text-sm text-zinc-500 dark:text-zinc-500">{job.dates}</p>
-            </div>
-            <ul className="list-disc pl-5 text-sm text-zinc-600 dark:text-zinc-400">
-              {job.bullets.map((bullet) => (
-                <li key={bullet}>{bullet}</li>
-              ))}
-            </ul>
-            <p className="text-xs text-zinc-500 dark:text-zinc-500">{job.stack.join(", ")}</p>
+          <div className="mt-4 border-t border-border pt-4">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              Relevant coursework
+            </p>
+            <p className="mt-1 text-sm text-muted">{education.coursework.join(", ")}</p>
           </div>
-        ))}
+          <div className="mt-4">
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              Organizations
+            </p>
+            <p className="mt-1 text-sm text-muted">{education.organizations.join(", ")}</p>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col gap-4">
-        <h2 className="text-xl font-semibold tracking-tight">Skills</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">
+          Where I&apos;ve worked
+        </h2>
+        <div className="flex flex-col gap-4">
+          {experience.map((job) => (
+            <div
+              key={`${job.organization}-${job.role}`}
+              className="rounded-md border border-border p-5"
+            >
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <p className="font-medium">
+                  {job.role} · {job.organization}
+                </p>
+                <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                  {job.dates}
+                </p>
+              </div>
+              <ul className="mt-3 list-disc pl-5 text-sm text-muted">
+                {job.bullets.map((bullet) => (
+                  <li key={bullet}>{bullet}</li>
+                ))}
+              </ul>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {job.stack.map((tech) => (
+                  <li
+                    key={tech}
+                    className="rounded border border-border px-2 py-0.5 font-mono text-[11px] uppercase tracking-widest text-muted"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Skills</h2>
+        <div className="grid gap-4 rounded-md border border-border p-5 sm:grid-cols-2">
           <div>
-            <p className="text-sm font-medium">Languages</p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">{skills.languages.join(", ")}</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium">Frameworks</p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">{skills.frameworks.join(", ")}</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium">Tools</p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">{skills.tools.join(", ")}</p>
-          </div>
-          <div>
-            <p className="text-sm font-medium">Certifications</p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {skills.certifications.join(", ")}
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              Languages
             </p>
+            <p className="mt-1 text-sm text-muted">{skills.languages.join(", ")}</p>
+          </div>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              Frameworks
+            </p>
+            <p className="mt-1 text-sm text-muted">{skills.frameworks.join(", ")}</p>
+          </div>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">Tools</p>
+            <p className="mt-1 text-sm text-muted">{skills.tools.join(", ")}</p>
+          </div>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
+              Certifications
+            </p>
+            <p className="mt-1 text-sm text-muted">{skills.certifications.join(", ")}</p>
           </div>
         </div>
       </div>

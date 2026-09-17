@@ -14,7 +14,7 @@ export default function ResumePage() {
         <a
           href={site.resumeUrl}
           download
-          className="rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background"
+          className="rounded-md bg-foreground px-5 py-2.5 font-mono text-sm uppercase tracking-widest text-background"
         >
           Download PDF
         </a>
@@ -22,11 +22,11 @@ export default function ResumePage() {
       <object
         data={site.resumeUrl}
         type="application/pdf"
-        className="h-[80vh] w-full rounded-lg border border-black/10 dark:border-white/15"
+        className="h-[80vh] w-full rounded-md border border-border"
       >
-        <p className="p-4 text-zinc-600 dark:text-zinc-400">
+        <p className="p-4 text-muted">
           Your browser can&apos;t display the embedded PDF.{" "}
-          <a href={site.resumeUrl} className="underline">
+          <a href={site.resumeUrl} className="text-accent underline">
             Download the resume
           </a>{" "}
           instead.
