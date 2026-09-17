@@ -174,9 +174,8 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="relative scroll-mt-20 overflow-hidden border-t border-border">
-        <div className="absolute inset-0 bg-warp-beams" aria-hidden="true" />
-        <div className="relative mx-auto max-w-3xl px-6 py-24">
+      <section id="contact" className="scroll-mt-20 border-t border-border">
+        <div className="mx-auto max-w-3xl px-6 py-24">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-muted">Contact</p>
             <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Let&apos;s talk.</h2>

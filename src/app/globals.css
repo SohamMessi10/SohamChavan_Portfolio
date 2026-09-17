@@ -172,44 +172,6 @@ body {
   }
 }
 
-/* Rotating hyperspace-style beams, used behind the contact section. */
-.bg-warp-beams {
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    rgba(34, 211, 238, 0.3) 2deg,
-    transparent 8deg,
-    transparent 55deg,
-    rgba(139, 92, 246, 0.3) 57deg,
-    transparent 63deg,
-    transparent 110deg,
-    rgba(34, 211, 238, 0.25) 112deg,
-    transparent 118deg,
-    transparent 165deg,
-    rgba(139, 92, 246, 0.25) 167deg,
-    transparent 173deg,
-    transparent 220deg,
-    rgba(34, 211, 238, 0.3) 222deg,
-    transparent 228deg,
-    transparent 275deg,
-    rgba(139, 92, 246, 0.3) 277deg,
-    transparent 283deg,
-    transparent 330deg,
-    rgba(34, 211, 238, 0.25) 332deg,
-    transparent 338deg,
-    transparent 360deg
-  );
-  animation: warp-spin 40s linear infinite;
-  mask-image: radial-gradient(circle at center, black, transparent 70%);
-  -webkit-mask-image: radial-gradient(circle at center, black, transparent 70%);
-}
-
-@keyframes warp-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -221,8 +183,7 @@ body {
   .bg-grid-drift,
   .bg-radar-sweep,
   .bg-nebula::before,
-  .bg-nebula::after,
-  .bg-warp-beams {
+  .bg-nebula::after {
     animation: none;
   }
 }
