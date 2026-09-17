@@ -23,7 +23,7 @@ export default function Home() {
               <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl">
                 <span className="[text-shadow:0_0_36px_var(--accent)]">Soham Chavan</span>
               </h1>
-              <div className="mt-2 h-px w-full bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-amber-300 animate-draw-underline" />
+              <div className="mt-2 h-px w-full bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 animate-draw-underline" />
             </div>
           </div>
 
