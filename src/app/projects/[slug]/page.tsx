@@ -37,7 +37,10 @@ export default async function ProjectPage({
 
   return (
     <section className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-16">
-      <h1 className="text-3xl font-semibold tracking-tight">{project.name}</h1>
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">{project.name}</h1>
+        <p className="text-sm text-zinc-500 dark:text-zinc-500">{project.dates}</p>
+      </div>
       <p className="text-zinc-600 dark:text-zinc-400">{project.summary}</p>
 
       <div>
@@ -69,21 +72,6 @@ export default async function ProjectPage({
               <li key={outcome}>{outcome}</li>
             ))}
           </ul>
-        </div>
-      )}
-
-      {project.links && (project.links.repo || project.links.demo) && (
-        <div className="flex gap-4 text-sm">
-          {project.links.repo && (
-            <a href={project.links.repo} className="underline">
-              Repository
-            </a>
-          )}
-          {project.links.demo && (
-            <a href={project.links.demo} className="underline">
-              Live demo
-            </a>
-          )}
         </div>
       )}
     </section>
