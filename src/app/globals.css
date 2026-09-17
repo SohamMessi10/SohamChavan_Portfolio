@@ -27,6 +27,43 @@ body {
   color: var(--foreground);
 }
 
+/* Glowing gradient section divider, echoes the scroll-progress bar. */
+.divider-glow {
+  position: relative;
+}
+
+.divider-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(34, 211, 238, 0.6),
+    rgba(139, 92, 246, 0.6),
+    transparent
+  );
+  box-shadow: 0 0 16px 1px rgba(34, 211, 238, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 14px rgba(34, 211, 238, 0.45);
+}
+
+.card-lit {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card-lit:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 30px -10px var(--accent);
+}
+
 @keyframes blink {
   0%,
   49% {

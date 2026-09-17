@@ -36,7 +36,7 @@ export default function Home() {
       </section>
 
       {/* About (unlabeled — flows straight from the hero) */}
-      <section id="about" className="relative scroll-mt-20 overflow-hidden border-t border-border py-24">
+      <section id="about" className="relative scroll-mt-20 overflow-hidden divider-glow py-24">
         <div className="absolute inset-0 bg-nebula" aria-hidden="true" />
         <div className="relative mx-auto flex max-w-3xl flex-col gap-16 px-6">
           <Reveal className="flex flex-col gap-4">
@@ -60,7 +60,7 @@ export default function Home() {
 
           <Reveal className="flex flex-col gap-4" delay={100}>
             <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Education</h2>
-            <div className="rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+            <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
               <p className="font-medium">{education.school}</p>
               <p className="text-muted">{education.degree}</p>
               <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted">
@@ -86,18 +86,18 @@ export default function Home() {
       {/* Experience */}
       <section
         id="experience"
-        className="relative scroll-mt-20 overflow-hidden border-t border-border py-24"
+        className="relative scroll-mt-20 overflow-hidden divider-glow py-24"
       >
         <DataStream />
         <div className="relative mx-auto flex max-w-3xl flex-col gap-4 px-6">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">Experience</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Experience</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Where I&apos;ve worked</h2>
           </Reveal>
           <div className="mt-6 flex flex-col gap-4">
             {experience.map((job, index) => (
               <Reveal key={`${job.organization}-${job.role}`} delay={index * 80}>
-                <div className="rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <p className="font-medium">
                       {job.role} · {job.organization}
@@ -129,11 +129,11 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative scroll-mt-20 overflow-hidden border-t border-border py-24">
+      <section id="projects" className="relative scroll-mt-20 overflow-hidden divider-glow py-24">
         <div className="absolute inset-0 bg-grid-drift" aria-hidden="true" />
         <div className="relative mx-auto max-w-4xl px-6">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">Selected work</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Selected work</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Projects</h2>
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
@@ -149,19 +149,19 @@ export default function Home() {
       {/* Toolkit */}
       <section
         id="toolkit"
-        className="relative scroll-mt-20 overflow-hidden border-t border-border py-24"
+        className="relative scroll-mt-20 overflow-hidden divider-glow py-24"
       >
         <div className="absolute inset-0 bg-radar" aria-hidden="true" />
         <div className="absolute inset-0 bg-radar-sweep" aria-hidden="true" />
         <div className="relative mx-auto max-w-3xl px-6">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">Toolkit</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Toolkit</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">What I build with</h2>
           </Reveal>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {toolkit.map((category, index) => (
               <Reveal key={category.label} delay={index * 80}>
-                <div className="rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
                   <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
                     {category.label}
                   </p>
@@ -174,10 +174,10 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <section id="contact" className="scroll-mt-20 border-t border-border">
+      <section id="contact" className="scroll-mt-20 divider-glow">
         <div className="mx-auto max-w-3xl px-6 py-24">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-muted">Contact</p>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Contact</p>
             <h2 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Let&apos;s talk.</h2>
             <p className="mt-4 max-w-lg text-muted">
               Open to internships and research collaborations in data science, ML, and AI. Reach
