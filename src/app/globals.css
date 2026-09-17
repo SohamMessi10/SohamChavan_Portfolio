@@ -18,6 +18,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -38,8 +42,94 @@ body {
   animation: blink 1s step-start infinite;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+@keyframes draw-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-draw-underline {
+  transform-origin: left;
+  animation: draw-underline 1.1s 0.3s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+/* Blueprint-style grid backdrop that drifts slowly, used behind the
+   projects list. Pure CSS so it costs nothing to render. */
+.bg-grid-drift {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.22) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: grid-pan 24s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 85%);
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 48px;
+  }
+}
+
+/* Radar-style backdrop (concentric rings + rotating sweep), used behind
+   the skills section. */
+.bg-radar {
+  background-image: repeating-radial-gradient(
+    circle at center,
+    transparent 0,
+    transparent 55px,
+    var(--border) 56px,
+    var(--border) 57px
+  );
+  mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+}
+
+.bg-radar-sweep {
+  background: conic-gradient(from 0deg, transparent 0deg, var(--accent) 8deg, transparent 40deg);
+  opacity: 0.25;
+  animation: radar-spin 10s linear infinite;
+  mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black, transparent 75%);
+}
+
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .cursor-blink {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-blink,
+  .animate-fade-up,
+  .animate-draw-underline,
+  .bg-grid-drift,
+  .bg-radar-sweep {
     animation: none;
   }
 }
