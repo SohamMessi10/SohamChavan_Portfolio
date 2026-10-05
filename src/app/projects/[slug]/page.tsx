@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "@/content/projects";
+import { site } from "@/content/site";
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -24,6 +25,15 @@ export async function generateMetadata({
     title: project.name,
     description: project.summary,
     alternates: { canonical: `/projects/${project.slug}` },
+    // A child's openGraph replaces the layout's instead of merging with it.
+    // Without this, shared project links preview as the homepage.
+    openGraph: {
+      type: "article",
+      url: `/projects/${project.slug}`,
+      title: `${project.name} — ${site.name}`,
+      description: project.summary,
+      siteName: site.name,
+    },
   };
 }
 
