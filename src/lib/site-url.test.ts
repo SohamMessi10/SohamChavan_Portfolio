@@ -21,4 +21,12 @@ describe("getSiteUrl", () => {
   it("falls back to localhost when nothing is configured", () => {
     expect(getSiteUrl()).toBe("http://localhost:3000");
   });
+
+  it.each(["sohamchavan.dev", "localhost:3000", "ftp://example.com"])(
+    "rejects NEXT_PUBLIC_SITE_URL=%s with an error naming the variable",
+    (value) => {
+      vi.stubEnv("NEXT_PUBLIC_SITE_URL", value);
+      expect(() => getSiteUrl()).toThrow(/NEXT_PUBLIC_SITE_URL must be an absolute http\(s\) URL/);
+    },
+  );
 });
