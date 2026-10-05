@@ -201,4 +201,10 @@ body {
   .bg-nebula::after {
     animation: none;
   }
+
+  .reveal {
+    opacity: 1 !important;
+    translate: none !important;
+    transition: none !important;
+  }
 }

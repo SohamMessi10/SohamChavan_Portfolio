@@ -59,12 +59,19 @@ export function DataStream() {
       }
     }
 
+    function onResize() {
+      resize();
+      // Resizing clears the canvas, and with reduced motion there is no
+      // animation loop to repaint it.
+      if (prefersReducedMotion) draw();
+    }
+
     resize();
     draw();
-    window.addEventListener("resize", resize);
+    window.addEventListener("resize", onResize);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      window.removeEventListener("resize", onResize);
       if (animationFrame) cancelAnimationFrame(animationFrame);
     };
   }, []);

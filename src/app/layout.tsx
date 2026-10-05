@@ -54,7 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <noscript>
-          <style>{`.reveal { opacity: 1 !important; transform: none !important; }`}</style>
+          <style>{`.reveal { opacity: 1 !important; translate: none !important; }`}</style>
         </noscript>
         <JsonLd data={personJsonLd} />
         <div className="fixed inset-0 -z-10" aria-hidden="true">

@@ -12,9 +12,9 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(
-    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-  );
+  // Start hidden on both server and client so hydration matches. Reduced-motion
+  // users are shown the content by CSS (see globals.css), not by this state.
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
