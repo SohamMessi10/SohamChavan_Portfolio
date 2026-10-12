@@ -45,7 +45,9 @@ export default async function ProjectPage({
         ← Back to projects
       </Link>
       <div>
-        <p className="font-mono text-xs uppercase tracking-widest text-muted">{project.dates}</p>
+        {project.dates && (
+          <p className="font-mono text-xs uppercase tracking-widest text-muted">{project.dates}</p>
+        )}
         <h1 className="mt-1 text-3xl font-semibold tracking-tight">{project.name}</h1>
       </div>
       <p className="text-muted">{project.summary}</p>

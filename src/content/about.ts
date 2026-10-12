@@ -28,12 +28,12 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    organization: "Penn State University — Dept. of Information Sciences & Biochemistry",
-    role: "Undergraduate Student Researcher",
+    organization: "AI4 Research Lab",
+    role: "Undergraduate Research Assistant",
     stack: ["Python", "LLM", "NLP", "PubMed API", "PostgreSQL"],
     dates: "Feb 2026 – Present",
     bullets: [
-      "Build an LLM-based pipeline to extract and classify database accessions from biomedical manuscripts via the PubMed API",
+      "Build an LLM-based pipeline via the PubMed API to process database accessions from 10,000+ biomedical manuscripts",
       "Design NLP-based linkage logic between ReDU and NCBI SRA, cutting manual curation effort for multi-omics research",
       "Resolve inconsistent sample identifiers across manuscripts and databases to enable reliable cross-database matching",
     ],
@@ -42,42 +42,42 @@ export const experience: Experience[] = [
     organization: "Nittany Data Labs",
     role: "Data Analytics Project Lead",
     stack: ["Python", "SQL", "Pandas", "NumPy", "EDA", "Jupyter"],
-    dates: "Sept 2025 – Present",
+    dates: "Aug 2025 – Present",
     bullets: [
-      "Translate 20,000+ financial records into actionable data problems using SQL to surface spending trends and risk indicators",
-      "Execute EDA & anomaly detection with Pandas and NumPy, identifying behavioral patterns and anomalies for financial decisions",
-      "Synthesize findings into Jupyter-based executive summaries, improving reporting clarity and decision-making for leadership",
+      "Queried and analyzed 20,000+ financial records in SQL, identifying 8 spending tracks and 4 risk indicators for clients",
+      "Performed EDA and anomaly detection in Pandas and NumPy, flagging 600 high-risk transactions for review",
+      "Presented Jupyter-based findings and visualizations across 4 review cycles and a final presentation to project leadership",
+    ],
+  },
+  {
+    organization: "Caterpillar",
+    role: "Software Engineer Intern",
+    stack: ["PyTorch", "Docker", "Kubernetes", "MLOps"],
+    dates: "May 2026 – Aug 2026",
+    bullets: [
+      "Built a PyTorch time series forecasting model on 1M+ supply-chain records, improving forecast accuracy by 12%",
+      "Deployed scalable batched inference for 520 SKUs on Docker and Kubernetes, reducing runtime to 2.85 minutes",
+      "Engineered an MLOps retraining pipeline with 4-week shadow validation and metric gates for 20 Angular dashboards",
     ],
   },
   {
     organization: "Atlas Analytics",
-    role: "Data Science Analyst",
-    stack: ["PyTorch", "Python", "SQL", "Pandas", "Power BI"],
-    dates: "Jan 2026 – Mar 2026",
+    role: "Data Analytics Intern",
+    stack: ["Scikit-learn", "PyTorch", "SQL"],
+    dates: "Aug 2026 – Dec 2026",
     bullets: [
-      "Engineered transformer-based time series models in PyTorch, improving multi-horizon demand forecast accuracy by 10%",
-      "Profiled and refactored the PyTorch inference pipeline, adding automated benchmarking that cut latency by 5%",
-      "Built and deployed SQL-backed BI dashboards with scheduled data refreshes, removing 6 hours/week of manual reporting",
-    ],
-  },
-  {
-    organization: "Nimbus Analytics Labs",
-    role: "Operations Analytics Lead",
-    stack: ["Python", "Scikit-learn", "Pandas", "NumPy"],
-    dates: "Aug 2025 – Dec 2025",
-    bullets: [
-      "Built a Python data pipeline to process 10,000+ customer and financial records, surfacing behavioral and retention patterns",
-      "Engineered a reusable feature-preprocessing module that cut dimensionality by 30% and reduced model training time by 35%",
-      "Trained and deployed supervised ML classifiers to score churn risk and segment customers into behavioral cohorts",
+      "Trained a Scikit-learn classification model to predict customer churn, achieving 88% accuracy and 0.86 F1-score",
+      "Reduced model inference latency by ~5% through PyTorch pipeline refactoring and performance benchmarking",
+      "Developed SQL-backed dashboards with automated schedule refreshes, saving ~6 hours/week in manual reporting",
     ],
   },
 ];
 
 export const skills = {
-  languages: ["Python", "SQL", "Java", "R", "HTML/CSS", "JavaScript", "Bash"],
-  frameworks: ["Pandas", "NumPy", "Scikit-learn", "PyTorch", "Django", "Flask", "Streamlit", "Node.js"],
-  tools: ["Git", "Docker", "AWS", "Excel", "Jupyter", "Power BI", "PyTest", "Apache Derby", "PostgreSQL", "PubMed API", "JDBC"],
-  certifications: ["SAP Certified – SAP Generative AI Developer"],
+  languages: ["C++", "C", "Python", "Java", "SQL", "TypeScript", "Bash", "R"],
+  frameworks: ["Scikit-learn", "PyTorch", "React", "Flask", "Streamlit", "Node.js", "Pydantic"],
+  tools: ["Git", "Docker", "AWS", "Excel", "Jupyter", "Power BI", "PyTest", "Apache Derby", "PostgreSQL"],
+  certifications: ["SAP Certified – SAP Generative AI Developer", "Columbia+ AI for Business"],
 };
 
 export type ToolkitCategory = {
@@ -87,7 +87,7 @@ export type ToolkitCategory = {
 
 export const toolkit: ToolkitCategory[] = [
   { label: "Languages", items: skills.languages },
-  { label: "ML / Data", items: skills.frameworks },
+  { label: "Frameworks", items: skills.frameworks },
   { label: "Tools & Infra", items: skills.tools },
   { label: "Certifications", items: skills.certifications },
 ];

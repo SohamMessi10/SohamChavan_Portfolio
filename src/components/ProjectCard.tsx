@@ -14,9 +14,11 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         {String(index + 1).padStart(2, "0")}
       </span>
       <div className="relative flex flex-col gap-3">
-        <span className="font-mono text-xs uppercase tracking-widest text-muted">
-          {project.dates}
-        </span>
+        {project.dates && (
+          <span className="font-mono text-xs uppercase tracking-widest text-muted">
+            {project.dates}
+          </span>
+        )}
         <h3 className="text-xl font-semibold tracking-tight">{project.name}</h3>
         <p className="text-sm text-muted">{project.summary}</p>
         <ul className="flex flex-wrap gap-2">
