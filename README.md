@@ -26,6 +26,12 @@ Graph, and JSON-LD). Falls back to `VERCEL_PROJECT_PRODUCTION_URL`, then
 
 ## Content
 
-Site metadata lives in `src/content/site.ts` and project case studies in
-`src/content/projects.ts`. Both currently contain placeholders pending real
-content.
+Site metadata lives in `src/content/site.ts`, project case studies in
+`src/content/projects.ts`, hackathon awards in `src/content/awards.ts`, and the
+headline numbers above the projects in `src/content/stats.ts`.
+
+- Projects are listed newest first by their `date` (the repo's creation time).
+- Project figures are served from `public/projects/<slug>/` (the CSP only allows
+  same-origin images); give each one its pixel `width`/`height` and a `fit`.
+- Every result and stat should be a number that appears in the project's own
+  README or benchmark results.

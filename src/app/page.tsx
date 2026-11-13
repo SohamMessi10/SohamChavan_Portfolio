@@ -1,8 +1,11 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import { projects } from "@/content/projects";
+import { awards } from "@/content/awards";
 import { education, experience, toolkit } from "@/content/about";
 import { Reveal } from "@/components/Reveal";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectExplorer } from "@/components/ProjectExplorer";
+import { StatsStrip } from "@/components/StatsStrip";
 import { DataStream } from "@/components/DataStream";
 
 export default function Home() {
@@ -92,7 +95,7 @@ export default function Home() {
 
             <Reveal delay={140} className="flex flex-col gap-4">
               <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Education</h2>
-              <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+              <div data-spotlight className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
                 <p className="font-medium">{education.school}</p>
                 <p className="text-muted">{education.degree}</p>
                 <p className="mt-1 font-mono text-xs uppercase tracking-widest text-muted">
@@ -127,7 +130,7 @@ export default function Home() {
           <div className="mt-6 flex flex-col gap-4">
             {experience.map((job, index) => (
               <Reveal key={`${job.organization}-${job.role}`} delay={index * 80}>
-                <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                <div data-spotlight className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
                     <p className="font-medium">
                       {job.role} · {job.organization}
@@ -159,17 +162,73 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="relative scroll-mt-20 overflow-hidden py-24">
+      {/* overflow-clip (not hidden) so the explorer's sticky preview panel still sticks */}
+      <section id="projects" className="relative scroll-mt-20 overflow-clip py-24">
         <div className="absolute inset-0 bg-grid-drift" aria-hidden="true" />
-        <div className="relative mx-auto max-w-4xl px-6">
+        <div className="relative mx-auto max-w-6xl px-6">
           <Reveal>
             <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Selected work</p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight">Projects</h2>
+            <p className="mt-3 max-w-2xl text-muted">
+              Newest first. Scroll the timeline and the preview follows along, or filter by area
+              and open any project for the full case study.
+            </p>
           </Reveal>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2">
-            {projects.map((project, index) => (
-              <Reveal key={project.slug} delay={index * 100}>
-                <ProjectCard project={project} index={index} />
+          <StatsStrip />
+          <ProjectExplorer projects={projects} />
+        </div>
+      </section>
+
+      {/* Hackathons & Awards */}
+      <section id="awards" className="relative scroll-mt-20 py-24">
+        <div className="relative mx-auto max-w-3xl px-6">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Awards</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Hackathons &amp; Awards</h2>
+          </Reveal>
+          <div className="mt-8 flex flex-col gap-4">
+            {awards.map((award, index) => (
+              <Reveal key={`${award.event}-${award.project}`} delay={index * 80}>
+                <div data-spotlight className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                  <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                    <h3 className="font-medium">
+                      {award.event} ·{" "}
+                      <Link
+                        href={`/projects/${award.projectSlug}`}
+                        className="underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                      >
+                        {award.project}
+                      </Link>
+                    </h3>
+                    <p className="font-mono text-xs uppercase tracking-widest text-muted">
+                      {award.dates}
+                    </p>
+                  </div>
+                  <ul className="mt-4 flex flex-col gap-3">
+                    {award.prizes.map((prize) => (
+                      <li key={prize.name} className="flex items-start gap-3">
+                        <span aria-hidden="true" className="text-amber-300">
+                          ★
+                        </span>
+                        <span className="text-sm">
+                          {prize.name}
+                          <span className="block font-mono text-[11px] uppercase tracking-widest text-amber-200/90">
+                            {prize.placement}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={award.devpostUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-accent transition-colors hover:text-foreground"
+                  >
+                    View on Devpost<span aria-hidden="true">↗</span>
+                    <span className="sr-only">(opens in a new tab)</span>
+                  </a>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -188,7 +247,7 @@ export default function Home() {
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {toolkit.map((category, index) => (
               <Reveal key={category.label} delay={index * 80}>
-                <div className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
+                <div data-spotlight className="card-lit rounded-md border border-border bg-background/70 p-5 backdrop-blur-sm">
                   <p className="font-mono text-[11px] uppercase tracking-widest text-muted">
                     {category.label}
                   </p>

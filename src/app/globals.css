@@ -42,6 +42,86 @@ body {
   box-shadow: 0 0 30px -10px var(--accent);
 }
 
+/* Cursor spotlight (see components/Spotlight.tsx, which sets --spot-x/--spot-y):
+   a soft glow under the content plus a brighter ring on the border. */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before,
+[data-spotlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+[data-spotlight]::before {
+  z-index: -1;
+  background: radial-gradient(
+    420px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(34, 211, 238, 0.1),
+    transparent 45%
+  );
+}
+
+[data-spotlight]::after {
+  z-index: 1;
+  padding: 1px;
+  background: radial-gradient(
+    240px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(34, 211, 238, 0.7),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  [data-spotlight]:hover::before,
+  [data-spotlight]:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Slight 3D tilt toward the cursor (--tilt-x/--tilt-y from Spotlight.tsx). */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  [data-tilt] {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition:
+      transform 0.25s ease-out,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease,
+      background-color 0.3s ease;
+  }
+}
+
+/* Explorer preview panel: short enter animation when the project changes. */
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-panel-in {
+  animation: panel-in 0.35s ease-out both;
+}
+
 @keyframes blink {
   0%,
   49% {
@@ -195,10 +275,32 @@ body {
   .cursor-blink,
   .animate-fade-up,
   .animate-draw-underline,
+  .animate-panel-in,
   .bg-grid-drift,
   .bg-radar-sweep,
   .bg-nebula::before,
   .bg-nebula::after {
     animation: none;
   }
+
+  .preview-layer,
+  .timeline-fill {
+    transition: none;
+  }
+
+  /* Scroll-reveal blocks appear immediately, even before JavaScript runs. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Horizontally scrollable rows (the phone nav) without a visible scrollbar. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }

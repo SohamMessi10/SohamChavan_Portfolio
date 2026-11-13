@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 // script-src allows 'unsafe-inline' because Next.js needs it for hydration.
+// 'unsafe-eval' is added in development only: React's dev mode uses eval()
+// for debugging (rebuilding call stacks); production builds never use it.
+const isDev = process.env.NODE_ENV === "development";
+
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data:",
   "font-src 'self'",

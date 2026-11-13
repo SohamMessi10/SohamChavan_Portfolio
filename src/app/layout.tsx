@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Starfield } from "@/components/Starfield";
+import { Spotlight } from "@/components/Spotlight";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="fixed inset-0 -z-10" aria-hidden="true">
           <Starfield />
         </div>
+        <Spotlight />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
