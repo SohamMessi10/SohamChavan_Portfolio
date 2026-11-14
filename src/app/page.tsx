@@ -64,33 +64,6 @@ export default function Home() {
                 Graduating {education.graduation}
               </span>
               <span>{site.location}</span>
-              <a href={`mailto:${site.email}`} className="transition-colors hover:text-accent">
-                Email
-              </a>
-              <a
-                href={site.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                GitHub
-              </a>
-              <a
-                href={site.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                LinkedIn
-              </a>
-              <a
-                href={site.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                Résumé
-              </a>
             </Reveal>
 
             <Reveal delay={140} className="flex flex-col gap-4">
@@ -275,32 +248,6 @@ export default function Home() {
             >
               {site.email}
             </a>
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 border-t border-border pt-6 font-mono text-xs uppercase tracking-widest text-muted">
-              <a
-                href={site.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                LinkedIn
-              </a>
-              <a
-                href={site.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                GitHub
-              </a>
-              <a
-                href={site.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-accent"
-              >
-                Résumé
-              </a>
-            </div>
           </Reveal>
         </div>
       </section>

@@ -26,6 +26,9 @@ export function Nav() {
         <div className="flex w-full flex-wrap items-center gap-x-6 gap-y-2 sm:w-auto">
           <NavLinks items={site.nav} />
           <div className="hidden items-center gap-4 border-l border-border pl-6 font-mono text-xs uppercase tracking-widest text-muted sm:flex">
+            <a href={`mailto:${site.email}`} className="transition-colors hover:text-foreground">
+              Email
+            </a>
             <a
               href={site.social.github}
               target="_blank"

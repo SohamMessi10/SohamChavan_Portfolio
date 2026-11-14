@@ -100,7 +100,7 @@ export function ProjectPreview({
         {project.role && (
           <p className="-mt-1 text-sm text-foreground/90">
             <span className="font-mono text-[11px] uppercase tracking-widest text-accent">My role · </span>
-            {project.role}
+            {project.role.summary}
           </p>
         )}
 

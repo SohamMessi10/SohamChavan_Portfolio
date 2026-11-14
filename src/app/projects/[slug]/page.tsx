@@ -118,7 +118,7 @@ export default async function ProjectPage({
       {project.role && (
         <div className="rounded-md border border-accent/30 bg-accent/5 p-5">
           <h2 className="font-mono text-xs uppercase tracking-widest text-accent">My role</h2>
-          <p className="mt-2">{project.role}</p>
+          <p className="mt-2">{project.role.detail}</p>
         </div>
       )}
 

@@ -31,8 +31,8 @@ export type Project = {
   demoUrl?: string;
   /** Further demo links shown next to the main one, e.g. a second variant. */
   extraLinks?: { label: string; href: string }[];
-  /** For team projects: the part I built. */
-  role?: string;
+  /** For team projects: what I built. Summary on cards and the preview; detail on the case study. */
+  role?: { summary: string; detail: string };
   figure?: ProjectFigure;
   /** Set for shared repos owned by someone else, e.g. "Team project". */
   team?: string;
@@ -186,7 +186,12 @@ const allProjects: Project[] = [
     repoUrl: "https://github.com/AnushaAgarwal27/Docket",
     demoUrl: "https://docket-game.vercel.app/",
     team: "Team project",
-    role: "All of the backend and part of the frontend.",
+    role: {
+      summary:
+        "Built the entire backend (the five-agent Fetch.ai system, its Convex data layer and the rules engine) and parts of the frontend.",
+      detail:
+        "I built the entire backend: the five Fetch.ai uAgents and the shared Convex data layer they coordinate through, the rules engine and quote checker that only surface a flag when its cited clause matches the official IRS or eCFR text, and the integrations with Capital One Nessie for bank data and Cartesia for the payroll call. I also built parts of the frontend dashboard.",
+    },
     badge: "Hackathon winner (2 tracks)",
   },
   {
