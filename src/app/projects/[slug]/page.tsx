@@ -76,6 +76,13 @@ export default async function ProjectPage({
             <span className="sr-only">(opens in a new tab)</span>
           </a>
         )}
+        {project.extraLinks?.map((link) => (
+          <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
+            {link.label}
+            <span aria-hidden="true">↗</span>
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
+        ))}
         {award && (
           <a href={award.devpostUrl} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
             Devpost<span aria-hidden="true">↗</span>
@@ -107,6 +114,13 @@ export default async function ProjectPage({
         <h2 className="font-mono text-xs uppercase tracking-widest text-muted">Overview</h2>
         <p className="mt-2">{project.description}</p>
       </div>
+
+      {project.role && (
+        <div className="rounded-md border border-accent/30 bg-accent/5 p-5">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-accent">My role</h2>
+          <p className="mt-2">{project.role}</p>
+        </div>
+      )}
 
       {project.results && project.results.length > 0 && (
         <div className="rounded-md border border-border p-5">

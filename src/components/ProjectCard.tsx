@@ -67,6 +67,12 @@ export function ProjectCard({
           </Link>
         </h3>
         <p className="text-sm text-muted">{project.tagline}</p>
+        {project.role && (
+          <p className="text-sm text-foreground/90">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-accent">My role · </span>
+            {project.role}
+          </p>
+        )}
         <ul className="flex flex-wrap gap-2" aria-label="Tech stack">
           {project.stack.map((tech) => (
             <li

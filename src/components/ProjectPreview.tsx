@@ -97,6 +97,12 @@ export function ProjectPreview({
           <h3 className="text-2xl font-semibold tracking-tight">{project.name}</h3>
           {project.badge && <AwardBadge label={project.badge} />}
         </div>
+        {project.role && (
+          <p className="-mt-1 text-sm text-foreground/90">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-accent">My role · </span>
+            {project.role}
+          </p>
+        )}
 
         {results.length > 0 ? (
           <ul className="flex flex-col gap-2.5">
@@ -129,6 +135,13 @@ export function ProjectPreview({
               <span className="sr-only">of {project.name} (opens in a new tab)</span>
             </a>
           )}
+          {project.extraLinks?.map((link) => (
+            <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
+              {link.label}
+              <span aria-hidden="true">↗</span>
+              <span className="sr-only">for {project.name} (opens in a new tab)</span>
+            </a>
+          ))}
           {award && (
             <a href={award.devpostUrl} target="_blank" rel="noopener noreferrer" className={externalLinkClass}>
               Devpost<span aria-hidden="true">↗</span>

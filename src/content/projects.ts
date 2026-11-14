@@ -29,6 +29,10 @@ export type Project = {
   repoUrl: string;
   /** Live demo or GitHub Pages URL, if one exists. */
   demoUrl?: string;
+  /** Further demo links shown next to the main one, e.g. a second variant. */
+  extraLinks?: { label: string; href: string }[];
+  /** For team projects: the part I built. */
+  role?: string;
   figure?: ProjectFigure;
   /** Set for shared repos owned by someone else, e.g. "Team project". */
   team?: string;
@@ -85,7 +89,11 @@ const allProjects: Project[] = [
       "148 tests across 10 modules, with Hypothesis property tests run under 40 different seeds",
     ],
     repoUrl: "https://github.com/SohamMessi10/volatility-surface-lab",
-    demoUrl: "https://volatility-surface-lab.vercel.app/",
+    // GitHub Pages: index.html is the noisy market, clean.html the noise-free one.
+    demoUrl: "https://sohammessi10.github.io/volatility-surface-lab/",
+    extraLinks: [
+      { label: "Clean-market demo", href: "https://sohammessi10.github.io/volatility-surface-lab/clean.html" },
+    ],
     figure: {
       src: "/projects/vollens/surface-3d.png",
       alt: "3D implied-volatility surface over log-moneyness and expiry, with the market quotes plotted as points on it",
@@ -176,7 +184,9 @@ const allProjects: Project[] = [
     category: "Data/ML",
     stack: ["Python", "Fetch.ai uAgents", "ASI:One", "Convex", "Claude API", "Cartesia", "Capital One Nessie"],
     repoUrl: "https://github.com/AnushaAgarwal27/Docket",
+    demoUrl: "https://docket-game.vercel.app/",
     team: "Team project",
+    role: "All of the backend and part of the frontend.",
     badge: "Hackathon winner (2 tracks)",
   },
   {
