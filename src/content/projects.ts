@@ -1,4 +1,4 @@
-export const projectCategories = ["Quant", "Data/ML", "Backend"] as const;
+export const projectCategories = ["Markets", "Data/ML", "Backend"] as const;
 export type ProjectCategory = (typeof projectCategories)[number];
 
 export type ProjectFigure = {
@@ -43,7 +43,7 @@ export type Project = {
 };
 
 const allProjects: Project[] = [
-  // ── Quant ────────────────────────────────────────────────────────────────
+  // ── Markets ──────────────────────────────────────────────────────────────
   {
     slug: "pathforge",
     name: "PathForge",
@@ -52,7 +52,7 @@ const allProjects: Project[] = [
       "A multithreaded C++20 Monte Carlo option pricer with pybind11 Python bindings, bit-identical for any thread count.",
     description:
       "Monte Carlo pricing parallelizes naturally, but naive multithreading makes results depend on thread scheduling and floating-point summation order. PathForge prices European, Asian, barrier and Heston options in C++20 behind a Python API, seeding each 16,384-path chunk from (seed, chunk) only and merging per-chunk statistics in chunk order, so every thread count gives the same bits. It adds antithetic and control variates and randomized Sobol QMC with a Brownian bridge, and every price is tested against a closed-form or semi-analytic reference in standard-error units.",
-    category: "Quant",
+    category: "Markets",
     stack: ["C++20", "Python", "pybind11", "std::thread", "CMake", "pytest", "GitHub Actions"],
     results: [
       "50.5 M paths/s on one thread for a European call; 5.57× on 8 threads (3.83× on the 4 performance cores), bit-identical at every thread count (Apple M3, AppleClang 17, -O3)",
@@ -79,7 +79,7 @@ const allProjects: Project[] = [
       "Arbitrage-checked implied-volatility surfaces: a synthetic Heston market, SVI calibration, and an interactive 3D report.",
     description:
       "Fitting each volatility smile with a flexible curve can match the quotes and still allow static arbitrage, and with real quotes you never know the true surface. VolLens prices a synthetic option market under Heston so every quote's true implied vol is known, inverts prices with a Newton solver that falls back to Brent, fits each expiry with raw SVI (constraints enforced by reparametrization, Lee's wing bound built in), and checks butterfly and calendar arbitrage on a 3,001-point grid. The output is an interactive Plotly report with a 3D surface, per-expiry smiles and the arbitrage findings.",
-    category: "Quant",
+    category: "Markets",
     stack: ["Python", "NumPy", "SciPy", "Plotly", "pytest", "Hypothesis"],
     results: [
       "Implied-vol solver on 20,000 random cases: 19,625 solved (375 rejected as below double-precision resolution), max relative vol error 7.3e-10, 11.1 µs per inversion",
@@ -111,7 +111,7 @@ const allProjects: Project[] = [
       "Rolling risk statistics over an out-of-order, late and duplicated price feed, with z-score alerts scored against ground truth.",
     description:
       "Real price feeds arrive out of order, late and duplicated, and the textbook running-variance formula loses all precision at large magnitudes. riskmon releases events in event-time order behind a watermark, keeps rolling per-symbol statistics with Welford updates plus periodic exact rebuilds, and alerts at |z| ≥ 5. Alerts are scored against jumps injected into a seeded synthetic feed, false-alert rates are checked against Student's t theory, and each run is written to a static, script-free HTML dashboard.",
-    category: "Quant",
+    category: "Markets",
     stack: ["Python", "pytest", "Hypothesis", "Playwright", "GitHub Actions"],
     results: [
       "Default synthetic feed (2 symbols, 7,276 lines): 76 of 76 duplicates dropped, 19 of 20 injected jumps detected, 0 false alerts",
@@ -138,7 +138,7 @@ const allProjects: Project[] = [
       "A limit order book and matching engine built from scratch, with exact price-time priority and a step-through replay page.",
     description:
       "A matching engine is simple to describe and easy to get subtly wrong. This one stores each side of the book as FIFO price levels with a bisect-sorted best price, matches limit orders and cancels under price-time priority, and replays scripted order files into a self-contained HTML page you can step through. A deliberately simple reference engine is checked against the real one with Hypothesis differential and stateful tests, and the invariant checker has tests of its own: 23 deliberate corruptions it must catch.",
-    category: "Quant",
+    category: "Markets",
     stack: ["Python", "pytest", "Hypothesis", "Playwright", "GitHub Actions"],
     results: [
       "188,000 – 209,000 events/s on a typical 200,000-event workload; 227,000 – 236,000 on a deep book of almost 20,000 price levels (single thread, CPython 3.13, Intel Xeon @ 2.30 GHz)",
@@ -163,7 +163,7 @@ const allProjects: Project[] = [
       "A market-data platform: FastAPI backend, PostgreSQL storage, a scikit-learn anomaly detector and a Streamlit dashboard, containerized with Docker.",
     description:
       "Unusual price behavior is usually spotted by someone eyeballing charts. FinSight ingests daily OHLCV data and 20/50/200-day moving averages for 500 ticker symbols into PostgreSQL, serves them through a FastAPI REST API, and flags anomalous days with a per-ticker IsolationForest on rolling z-scores of return, realized volatility and volume. The Streamlit dashboard reads only through the API, and ingestion falls back to seeded synthetic data when Yahoo Finance is unreachable.",
-    category: "Quant",
+    category: "Markets",
     stack: ["Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "scikit-learn", "Streamlit", "Docker"],
     results: [
       "+63.5% F1 and +112.5% recall over a naive standard-deviation rule (F1 0.654 vs 0.400) on a labeled synthetic series with 30 injected anomalies",

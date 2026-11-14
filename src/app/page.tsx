@@ -167,11 +167,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-grid-drift" aria-hidden="true" />
         <div className="relative mx-auto max-w-6xl px-6">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Selected work</p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Projects</h2>
+            <p className="font-mono text-xs uppercase tracking-widest text-accent text-glow">Projects</p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight">Things I&apos;ve built</h2>
             <p className="mt-3 max-w-2xl text-muted">
-              Newest first. Scroll the timeline and the preview follows along, or filter by area
-              and open any project for the full case study.
+              Scroll the timeline and the preview follows along, or filter by area and open any
+              project for the full case study.
             </p>
           </Reveal>
           <StatsStrip />

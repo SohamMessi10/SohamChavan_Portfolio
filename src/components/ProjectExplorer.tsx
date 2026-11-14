@@ -122,7 +122,7 @@ export function ProjectExplorer({ projects }: { projects: Project[] }) {
           })}
         </div>
         <p className="sr-only" aria-live="polite">
-          {`Showing ${visible.length} ${filter === "All" ? "" : `${filter} `}project${visible.length === 1 ? "" : "s"}, newest first`}
+          {`Showing ${visible.length} ${filter === "All" ? "" : `${filter} `}project${visible.length === 1 ? "" : "s"}`}
         </p>
 
         <div ref={railRef} className="relative mt-8">
